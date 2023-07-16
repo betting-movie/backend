@@ -1,6 +1,8 @@
 {
   "version": 2,
-
   "builds": [{ "src": "bin/www", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "/bin/www" }]
+  "routes": [
+    { "src": "/api/.*", "dest": "bin/www" },
+    { "src": "/(.*)", "dest": "bin/www" }
+  ]
 }
