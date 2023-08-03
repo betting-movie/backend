@@ -1,6 +1,11 @@
 stages:
   - deploy
 
+on:
+  push:
+    branches:
+      - "main"
+
 deploy:
   stage: deploy
   script:
