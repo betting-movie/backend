@@ -6,19 +6,18 @@ on:
       - "main"
 jobs:
 
-stages:
-  - deploy
-deploy:
-  stage: deploy
-  script:
-    - aws configure set aws_access_key_id AKIAVDLXOVOU6MLC7ZX2
-    - aws configure set aws_secret_access_key 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
-    - aws configure set default.region ap-south-1
-    - >
-      aws ec2 run-instances \
-      --image-id ami-0f5ee92e2d63afc18 \
-      --instance-type t2.micro \
-      --key-name betting-movie \
-      --security-group-ids sgr-03a96026f9524f230 \
-      --subnet-id subnet-08bd5f68f975655f0 \
-      --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyEC2Instance}]'
+
+  deploy:
+    stage: deploy
+    script:
+      - aws configure set aws_access_key_id AKIAVDLXOVOU6MLC7ZX2
+      - aws configure set aws_secret_access_key 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
+      - aws configure set default.region ap-south-1
+      - >
+        aws ec2 run-instances \
+        --image-id ami-0f5ee92e2d63afc18 \
+        --instance-type t2.micro \
+        --key-name betting-movie \
+        --security-group-ids sgr-03a96026f9524f230 \
+        --subnet-id subnet-08bd5f68f975655f0 \
+        --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=MyEC2Instance}]'
