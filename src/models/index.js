@@ -18,6 +18,9 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.user = require("./user/user.model")(sequelize, Sequelize);
+// All models related to Leafy
+db.user = require("./leafy/user/user.model")(sequelize, Sequelize);
+
+// All models related to mentorship
 
 module.exports = db;

@@ -1,7 +1,7 @@
-const db = require("../../models");
+const db = require("../../../models");
 const User = db.user;
 const jwt = require("jsonwebtoken");
-const jwtConfig = require("../../config/jwt.config");
+const jwtConfig = require("../../../config/jwt.config");
 const bcrypt = require("bcrypt");
 
 const userController = {};

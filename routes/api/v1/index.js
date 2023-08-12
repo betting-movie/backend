@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const userRouter = require("./user");
+const userRouter = require("./leafy/user");
 
 router.use("/user", userRouter);
 
