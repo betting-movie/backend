@@ -14,7 +14,7 @@ module.exports = (sequelize, Sequelize) => {
 
       lastName: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       // email has to be unique, as its used for login
       email: {

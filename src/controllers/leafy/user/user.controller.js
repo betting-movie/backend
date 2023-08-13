@@ -16,24 +16,24 @@ userController.register = async (req, res) => {
   };
   try {
     const exist = await User.findOne({
-      where: { email: req.body.email },
+      where: { email: req.body.phone_number+'@leafyprofit.com' },
     });
     if (exist) {
       return res
         .status(409)
         .send({ success: false, msg: "user already exists" });
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(req.body.phone_number, 10);
 
     const user = await User.create({
       firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email,
+      lastName: req.body.lastName??"",
+      email: req.body.phone_number+'@leafyprofit.com',
       password: hashedPassword,
       phone_number: req.body.phone_number,
-      city: req.body.city,
-      state: req.body.state,
-      country: req.body.country,
+      city: req.body.city??"",
+      state: req.body.state??"",
+      country: req.body.country??"India",
     });
 
     if (user) {
