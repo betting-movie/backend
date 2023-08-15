@@ -22,5 +22,9 @@ db.sequelize = sequelize;
 db.user = require("./leafy/user/user.model")(sequelize, Sequelize);
 
 // All models related to mentorship
+db.Student = require("./mentorship/student/student.model")(
+  sequelize,
+  Sequelize
+);
 
 module.exports = db;

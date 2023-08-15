@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 const userController = {};
 
 userController.register = async (req, res) => {
-  const { password } = req.body;
+ 
 
   const responseData = {
     msg: "Error in register",
