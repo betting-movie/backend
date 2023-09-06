@@ -27,4 +27,7 @@ db.Student = require("./mentorship/student/student.model")(
   Sequelize
 );
 
+db.Guide = require("./mentorship/guide/guide.model")(sequelize,
+  Sequelize)
+
 module.exports = db;
