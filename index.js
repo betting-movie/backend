@@ -18,6 +18,7 @@ db.sequelize
   .catch((err) => {
     console.log("Failed to sync db: " + err.message);
   });
+  
 const memoryStore = new session.MemoryStore();
 
 app.use(

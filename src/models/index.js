@@ -1,9 +1,11 @@
 const dbConfig = require("../config/db.config");
 const Sequelize = require("sequelize");
+const pg = require("pg")
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
   dialect: dbConfig.dialect,
+  dialectModule: pg,
   operatorsAliases: "0",
   pool: {
     max: dbConfig.pool.max,
@@ -12,6 +14,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     idle: dbConfig.pool.idle,
   },
 });
+
 
 const db = {};
 
