@@ -1,6 +1,6 @@
 const dbConfig = require("../config/db.config");
 const Sequelize = require("sequelize");
-const pg = require("pg")
+const pg = require("pg");
 
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   host: dbConfig.HOST,
@@ -15,7 +15,6 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
   },
 });
 
-
 const db = {};
 
 db.Sequelize = Sequelize;
@@ -29,8 +28,8 @@ db.Student = require("./mentorship/student/student.model")(
   sequelize,
   Sequelize
 );
+db.Guide = require("./mentorship/guide/guide.model")(sequelize, Sequelize);
 
-db.Guide = require("./mentorship/guide/guide.model")(sequelize,
-  Sequelize)
+db.College = require("./mentorship/college/college.model")(sequelize, Sequelize);
 
 module.exports = db;
