@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize"); 
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize, Sequelize) => {
   const College = sequelize.define(
@@ -37,38 +37,38 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
       },
       fees: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING,
       },
       placement: {
-        type: DataTypes.ARRAY(DataTypes.FLOAT),
+        type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },
       collegeLogo: {
         type: Sequelize.STRING,
       },
       avgCutoff: {
-        type: Sequelize.FLOAT,
+        type: Sequelize.STRING,
       },
       counsellingMode: {
         type: DataTypes.ENUM,
-        values: ['ONLINE', 'OFFLINE'],
-        defaultValue: 'ONLINE'
+        values: ["ONLINE", "OFFLINE"],
+        defaultValue: "ONLINE",
       },
       admissionMode: {
         type: Sequelize.STRING,
       },
       establishmentYear: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       campusSize: {
         type: Sequelize.STRING,
       },
 
       numberOfStudents: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       numberOfDepartments: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       rankingsNIRF: {
         type: Sequelize.STRING,
@@ -77,10 +77,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
       },
       numberOfCourses: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       totalFaculty: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       scholarshipsOffered: {
         type: Sequelize.STRING,
@@ -93,6 +93,6 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: true,
     }
   );
-//   sequelize.sync({ force: true });
+  sequelize.sync({ force: true });
   return College;
 };
