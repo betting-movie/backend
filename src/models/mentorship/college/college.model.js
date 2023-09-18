@@ -93,6 +93,6 @@ module.exports = (sequelize, Sequelize) => {
       timestamps: true,
     }
   );
-  sequelize.sync({ force: true });
+  // sequelize.sync({ force: true });
   return College;
 };

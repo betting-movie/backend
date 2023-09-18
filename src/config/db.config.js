@@ -1,8 +1,9 @@
 module.exports = {
-  HOST: "moviebettingdb.cf65vgsnnmkm.ap-south-1.rds.amazonaws.com",
-  USER: "betting",
-  PASSWORD: process.env["PG_PASSWORD"],
-  DB: "bettingdb",
+  HOST: "localhost",
+  USER: "postgres",
+  // PASSWORD: process.env["PG_PASSWORD"],
+  PASSWORD:"Kushwaha@971",
+  DB: "betting",
   dialect: "postgres",
   pool: {
     max: 5,
