@@ -2,18 +2,29 @@ const dbConfig = require("../config/db.config");
 const Sequelize = require("sequelize");
 const pg = require("pg");
 
-const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.dialect,
-  dialectModule: pg,
-  operatorsAliases: "0",
-  pool: {
-    max: dbConfig.pool.max,
-    min: dbConfig.pool.min,
-    acquire: dbConfig.pool.acquire,
-    idle: dbConfig.pool.idle,
-  },
-});
+const sequelize = new Sequelize(
+  process.env.PGDATABASE, // Use PGDATABASE for the database name
+  process.env.PGUSER,     // Use PGUSER for the username
+  process.env.PGPASSWORD, // Use PGPASSWORD for the password
+  {
+    host: process.env.PGHOST,          // Use PGHOST for the host
+    dialect: 'postgres',              // Specify the dialect as 'postgres'
+    dialectModule: pg,                // Set the dialect module to 'pg'
+    operatorsAliases: '0',
+    pool: {
+      max: 5,                         // Adjust max pool size as needed
+      min: 0,
+      acquire: 30000,
+      idle: 10000,
+    },
+    dialectOptions: {
+      ssl: {
+        require: true,                // Enable SSL
+        rejectUnauthorized: false,    // If your certificate is self-signed, set to false; otherwise, true
+      },
+    },
+  }
+);
 
 const db = {};
 
