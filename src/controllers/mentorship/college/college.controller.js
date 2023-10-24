@@ -35,8 +35,6 @@ collegeController.getAllColleges = async(req,res)=>{
     result: "Empty",
   };
 
-  console.log("get-all")
-
   const college = await College.findAll()
 
   try {

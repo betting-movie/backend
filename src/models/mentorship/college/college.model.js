@@ -88,6 +88,12 @@ module.exports = (sequelize, Sequelize) => {
       brochure: {
         type: Sequelize.STRING,
       },
+      collegeImage:{
+        type: Sequelize.STRING,
+      },
+      averagePackageRange:{
+        type: Sequelize.STRING,
+      }
     },
     {
       timestamps: true,
