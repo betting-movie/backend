@@ -28,4 +28,30 @@ collegeController.registeredCollege = async (req, res) => {
   }
 };
 
+collegeController.getAllColleges = async(req,res)=>{
+  const responseData = {
+    msg: "Error in getting getting collegeData",
+    success: false,
+    result: "Empty",
+  };
+
+  console.log("get-all")
+
+  const college = await College.findAll()
+
+  try {
+    if (college) {
+      return res.status(200).send({ success: true, college: college });
+    } else {
+      return res
+        .status(400)
+        .send({ success: false, msg: "Something went wrong" });
+    }
+  } catch (error) {
+    console.log({ error });
+    responseData.result = error;
+    return res.status(400).send(responseData);
+  }
+}
+
 module.exports = collegeController;
