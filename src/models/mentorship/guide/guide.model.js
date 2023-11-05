@@ -47,7 +47,7 @@ module.exports = (sequelize, Sequelize) => {
       linkedinUrl: {
         type: Sequelize.STRING,
       },
-      consulatation_cost: {
+      consultation_cost: {
         type: Sequelize.INTEGER,
       },
       availability: {
@@ -64,6 +64,15 @@ module.exports = (sequelize, Sequelize) => {
       },
       skills: {
         type: DataTypes.ARRAY(DataTypes.STRING),
+      },
+      current_company: {
+        type: Sequelize.STRING,
+      },
+      rating: {
+        type: Sequelize.STRING,
+      },
+      mentees: {
+        type: Sequelize.INTEGER,
       },
     },
     {
