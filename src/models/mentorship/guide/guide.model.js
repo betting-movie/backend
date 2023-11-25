@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const roles = require("../../../utils/roles");
 
 module.exports = (sequelize, Sequelize) => {
   //id, name,designation, description, linkedinUrl, consulatation_cost, time_stamp
@@ -26,6 +27,10 @@ module.exports = (sequelize, Sequelize) => {
       profile_pic: {
         type: Sequelize.STRING,
         allowNull: true,
+      },
+      role: {
+        type: Sequelize.STRING,
+        defaultValue: roles.MENTOR,
       },
       phone_number: {
         type: Sequelize.STRING,

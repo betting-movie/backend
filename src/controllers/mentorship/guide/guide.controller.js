@@ -42,12 +42,12 @@ guideController.register = async (req, res) => {
       return res.status(200).send({
         success: true,
         guide,
+        token: jwt.sign(JSON.stringify(guide), jwtConfig.secret),
         msg: "registered successfully",
       });
     } else {
       return res.status(400).send({
         success: false,
-
         msg: "something went wrong",
       });
     }
@@ -85,6 +85,7 @@ guideController.login = async (req, res) => {
         success: true,
         guide: { ...guide.dataValues },
         token: jwt.sign(JSON.stringify(guide), jwtConfig.secret),
+        msg: "login successfully",
       });
     } else {
       return res

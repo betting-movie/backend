@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const roles = require("../../../utils/roles");
 
 module.exports = (sequelize, Sequelize) => {
   const Student = sequelize.define(
@@ -38,6 +39,10 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: false,
         unique: true,
+      },
+      role: {
+        type: Sequelize.STRING,
+        defaultValue: roles.STUDENT,
       },
       domains: {
         type: DataTypes.ARRAY(DataTypes.STRING),

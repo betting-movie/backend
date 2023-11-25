@@ -31,8 +31,8 @@ studentController.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const student = await Student.create({
-      name: req.body.name,
-      email: req.body.email,
+      name: req?.body?.name ?? "",
+      email: req?.body?.email,
       phone_number: phone_number,
       password: hashedPassword,
     });
@@ -40,6 +40,7 @@ studentController.register = async (req, res) => {
       return res.status(200).send({
         success: true,
         student,
+        token: jwt.sign(JSON.stringify(student), jwtConfig.secret),
         msg: "student registered successfully",
       });
     } else {
@@ -81,6 +82,7 @@ studentController.login = async (req, res) => {
         success: true,
         student: { ...student.dataValues },
         token: jwt.sign(JSON.stringify(student), jwtConfig.secret),
+        msg: "login successfully",
       });
     } else {
       return res
