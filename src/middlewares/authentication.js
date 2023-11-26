@@ -1,31 +1,25 @@
 const jwt = require("jsonwebtoken");
-// const roles = require("../../models/employee/roles");
 
-function getToken(req) {
-  if (
-    req.headers.Authorization &&
-    req.headers.Authorization.split(" ")[0] === "Bearer"
-  ) {
-    return req.headers.Authorization.split(" ")[1];
+exports.isAuthenticated = (req, res, next) => {
+  console.log("Req", req);
+  const authorizationHeader = req.headers["authorization"];
+
+  if (!authorizationHeader) {
+    return res.status(401).json({ message: "Unauthorized: Missing token" });
   }
-  return null;
-}
 
-exports.isAuthenticated = function (canAccess = []) {
-  return async (req, res, next) => {
-    try {
-      next();
-      const token = getToken(req);
-      const decode = await jwt.verify(token, process.env.JWT_SECRET);
-      console.log(decode.role);
+  const token = authorizationHeader.split(" ")[1];
 
-      if (canAccess.includes(decode.role)) {
-        next();
-      } else {
-        throw "Unauthenticated user";
-      }
-    } catch (error) {
-      res.status(400).send(error);
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized: Missing token" });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ message: "Forbidden: Invalid token" });
     }
-  };
+
+    req.user = user; // Attach the user object to the request for further use
+    next();
+  });
 };

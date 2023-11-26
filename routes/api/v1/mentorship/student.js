@@ -11,14 +11,10 @@ router.post("/login", studentController.login);
 router.post("/register", studentController.register);
 router.get(
   "/get-student/:id",
-  // isAuthenticated([roles.MENTOR, roles.STUDENT]),
+  isAuthenticated,
   studentController.getStudentById
 );
 router.get("/get-all-student", studentController.getStudents);
-router.put(
-  "/update/:id",
-  // isAuthenticated([roles.STUDENT]),
-  studentController.update
-);
+router.put("/update/:id", isAuthenticated, studentController.update);
 
 module.exports = router;
