@@ -64,9 +64,12 @@ db.StudentGuide.belongsTo(db.Student);
 db.StudentGuide.belongsTo(db.Guide);
 
 // Leafy-Profit Mapping
+db.treeReview.belongsTo(db.user, { foreignKey: "userId", as: "user" });
+db.treeReview.belongsTo(db.treeType, {
+  foreignKey: "treeTypeId",
+  as: "treeType",
+});
 
-db.treeReview.belongsTo(db.user);
-db.treeReview.belongsTo(db.treeType);
 db.order.belongsTo(db.user);
 db.order.belongsToMany(db.treeType, {
   through: "OrderTrees",

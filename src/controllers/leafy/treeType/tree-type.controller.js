@@ -37,7 +37,7 @@ treeTypeController.post = async (req, res) => {
 // get all tree list
 treeTypeController.getAllTreeList = async (req, res) => {
   const responseData = {
-    msg: "Error in getting getting tree data",
+    msg: "Error in getting tree data",
     success: false,
     result: "Empty",
   };
