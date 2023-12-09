@@ -47,6 +47,9 @@ module.exports = (sequelize, Sequelize) => {
       domains: {
         type: DataTypes.ARRAY(DataTypes.STRING),
       },
+      linkedinUrl: {
+        type: Sequelize.STRING,
+      },
       college: {
         type: Sequelize.STRING,
         allowNull: true,
@@ -55,9 +58,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      address: {
+      resume: {
         type: Sequelize.STRING,
-        allowNull: true,
       },
     },
     {
