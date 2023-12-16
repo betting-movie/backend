@@ -46,7 +46,7 @@ module.exports = (sequelize, Sequelize) => {
         // allowNull: false,
       },
       description: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(500),
         // allowNull: false,
       },
       linkedinUrl: {
@@ -59,16 +59,16 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
       },
       education: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(20)),
       },
       achivements: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(20)),
       },
       experience: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(20)),
       },
       skills: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(50)),
       },
       current_company: {
         type: Sequelize.STRING,

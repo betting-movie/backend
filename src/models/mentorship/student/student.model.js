@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
         allowNull: true,
       },
       bio: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(500),
         allowNull: true,
       },
       email: {
@@ -45,7 +45,7 @@ module.exports = (sequelize, Sequelize) => {
         defaultValue: roles.STUDENT,
       },
       domains: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.ARRAY(DataTypes.STRING(50)),
       },
       linkedinUrl: {
         type: Sequelize.STRING,
